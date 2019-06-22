@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <!-- 主布局 -->
+    <definition name="layout" template="WEB-INF/tiles/mainLayout.jsp">
+        <!--<put-attribute name="title" value="" />
+       &lt;!&ndash; <put-attribute name="header" value="/WEB-INF/sister/head1.jsp" />&ndash;&gt;
+        <put-attribute name="menu" value="" />-->
+        <put-attribute name="head" value="/WEB-INF/sister/head.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/sister/foot1.jsp" />
+    </definition>
+    <!-- 主布局 -->
+    <!-- 项目 -->
+    <definition name="myView1" extends="layout">
+        <put-attribute name="header" value="/WEB-INF/sister/head1.jsp" />
+        <put-attribute name="body" value="/WEB-INF/sister/body1.jsp" />
+    </definition>
+    <!--项目-->
+    <!-- 项目 -->
+    <definition name="myView2" extends="layout">
+        <put-attribute name="header" value="/WEB-INF/sister/head2.jsp" />
+        <put-attribute name="body" value="/WEB-INF/sister/body2.jsp" />
+    </definition>
+    <!--项目-->
+    <!-- 项目 -->
+    <definition name="left" template="WEB-INF/tiles/leftLayout.jsp">
+        <put-attribute name="head" value="/WEB-INF/sister/head3.jsp" />
+        <put-attribute name="header" value="/WEB-INF/sister/head31.jsp" />
+        <put-attribute name="head1" value="/WEB-INF/sister/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/sister/foot3.jsp"/>
+    </definition>
+    <!--项目-->
+    <definition name="myView3" extends="left">
+        <put-attribute name="menu" value="/WEB-INF/sister/menu3.jsp" />
+        <put-attribute name="body" value="/WEB-INF/sister/body3.jsp" />
+    </definition>
+</tiles-definitions>
