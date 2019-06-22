@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnshu.tiles.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.jnshu.tiles.entity.Student">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="salary" jdbcType="INTEGER" property="salary" />
+    <result column="create_at" jdbcType="BIGINT" property="createAt" />
+    <result column="update_at" jdbcType="BIGINT" property="updateAt" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from student
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jnshu.tiles.entity.Student">
+    insert into student (id, img, position, 
+      name, description, salary, 
+      create_at, update_at)
+    values (#{id,jdbcType=BIGINT}, #{img,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
+      #{createAt,jdbcType=BIGINT}, #{updateAt,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jnshu.tiles.entity.Student">
+    update student
+    set img = #{img,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=BIGINT},
+      update_at = #{updateAt,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, img, position, name, description, salary, create_at, update_at
+    from student
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, img, position, name, description, salary, create_at, update_at
+    from student
+    order by salary desc
+  </select>
+</mapper>
