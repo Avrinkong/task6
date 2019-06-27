@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnshu.tiles.dao.CompanyMapper">
-  <resultMap id="BaseResultMap" type="com.jnshu.tiles.entity.Company">
+<mapper namespace="jnshu.tiles.dao.CompanyMapper">
+  <resultMap id="BaseResultMap" type="jnshu.tiles.entity.Company">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="company" jdbcType="VARCHAR" property="company" />
     <result column="image" jdbcType="VARCHAR" property="image" />
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List">
     id, company, image, introduction, history, createAt, updateAt
   </sql>
-  <select id="selectByExample" parameterType="com.jnshu.tiles.entity.CompanyExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="jnshu.tiles.entity.CompanyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -95,13 +95,13 @@
     delete from company
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnshu.tiles.entity.CompanyExample">
+  <delete id="deleteByExample" parameterType="jnshu.tiles.entity.CompanyExample">
     delete from company
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnshu.tiles.entity.Company">
+  <insert id="insert" parameterType="jnshu.tiles.entity.Company">
     insert into company (id, company, image, 
       introduction, history, createAt, 
       updateAt)
@@ -109,7 +109,7 @@
       #{introduction,jdbcType=VARCHAR}, #{history,jdbcType=VARCHAR}, #{createat,jdbcType=BIGINT}, 
       #{updateat,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnshu.tiles.entity.Company">
+  <insert id="insertSelective" parameterType="jnshu.tiles.entity.Company">
     insert into company
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnshu.tiles.entity.CompanyExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="jnshu.tiles.entity.CompanyExample" resultType="java.lang.Long">
     select count(*) from company
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.tiles.entity.Company">
+  <update id="updateByPrimaryKeySelective" parameterType="jnshu.tiles.entity.Company">
     update company
     <set>
       <if test="company != null">
@@ -230,7 +230,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.tiles.entity.Company">
+  <update id="updateByPrimaryKey" parameterType="jnshu.tiles.entity.Company">
     update company
     set company = #{company,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},

@@ -8,13 +8,15 @@
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context-4.0.xsd
                         http://www.springframework.org/schema/mvc
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                        http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+>
 
     <mvc:annotation-driven />
 
     <!-- 自动扫描  @Controller-->
-    <context:component-scan base-package="com.jnshu.tiles.controller"/>
+    <context:component-scan base-package="jnshu.tiles.controller"/>
     <!--转化json-->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
@@ -59,6 +61,16 @@
     </bean>-->
 
     <!--<import resource="classpath:spring/applicationContext-shiro.xml"/>-->
+
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <!--<bean class="jnshu.tiles.LoginInterceptor"/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/u/*"/>
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="jnshu.tiles.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!--tiles框架视图解析器-->
     <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" p:order="1"/>

@@ -12,7 +12,7 @@
                       ">
 
     <!-- 自动扫描 -->
-    <context:component-scan base-package="com.jnshu.tiles"/>
+    <context:component-scan base-package="jnshu.tiles"/>
 
     <!-- 第一种方式：加载一个properties文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -88,7 +88,7 @@
         </property>
     </bean>
 
-    <mybatis:scan base-package="com.jnshu.tiles.dao"/>
+    <mybatis:scan base-package="jnshu.tiles.dao"/>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <!--4 自动扫描对象关系映射，MapperFactoryBean可以将数据映射接口转为Spring Bean -->
@@ -96,7 +96,7 @@
         <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
         <!-- 指定要自动扫描接口的基础包，实现接口 -->
-        <property name="basePackage" value="com.jnshu.tiles.dao"></property>
+        <property name="basePackage" value="jnshu.tiles.dao"></property>
     </bean>
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnshu.tiles.dao.ProfessionMapper">
-  <resultMap id="BaseResultMap" type="com.jnshu.tiles.entity.Profession">
+<mapper namespace="jnshu.tiles.dao.ProfessionMapper">
+  <resultMap id="BaseResultMap" type="jnshu.tiles.entity.Profession">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="img" jdbcType="VARCHAR" property="img" />
     <result column="direction" jdbcType="VARCHAR" property="direction" />
@@ -81,7 +81,7 @@
     id, img, direction, profession, description, threshold, difficulty, growth, scarcity, 
     yearone, yeartwo, yearthree, learnpeople, createat, updateat, introduction
   </sql>
-  <select id="selectByExample" parameterType="com.jnshu.tiles.entity.ProfessionExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="jnshu.tiles.entity.ProfessionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -105,13 +105,13 @@
     delete from profession
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.jnshu.tiles.entity.ProfessionExample">
+  <delete id="deleteByExample" parameterType="jnshu.tiles.entity.ProfessionExample">
     delete from profession
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.jnshu.tiles.entity.Profession">
+  <insert id="insert" parameterType="jnshu.tiles.entity.Profession">
     insert into profession (id, img, direction, 
       profession, description, threshold, 
       difficulty, growth, scarcity, 
@@ -125,7 +125,7 @@
       #{learnpeople,jdbcType=INTEGER}, #{createat,jdbcType=BIGINT}, #{updateat,jdbcType=BIGINT}, 
       #{introduction,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.jnshu.tiles.entity.Profession">
+  <insert id="insertSelective" parameterType="jnshu.tiles.entity.Profession">
     insert into profession
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -228,7 +228,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jnshu.tiles.entity.ProfessionExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="jnshu.tiles.entity.ProfessionExample" resultType="java.lang.Long">
     select count(*) from profession
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -312,7 +312,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jnshu.tiles.entity.Profession">
+  <update id="updateByPrimaryKeySelective" parameterType="jnshu.tiles.entity.Profession">
     update profession
     <set>
       <if test="img != null">
@@ -363,7 +363,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.tiles.entity.Profession">
+  <update id="updateByPrimaryKey" parameterType="jnshu.tiles.entity.Profession">
     update profession
     set img = #{img,jdbcType=VARCHAR},
       direction = #{direction,jdbcType=VARCHAR},

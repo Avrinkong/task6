@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jnshu.tiles.dao.StudentMapper">
-  <resultMap id="BaseResultMap" type="com.jnshu.tiles.entity.Student">
+<mapper namespace="jnshu.tiles.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="jnshu.tiles.entity.Student">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="img" jdbcType="VARCHAR" property="img" />
     <result column="position" jdbcType="VARCHAR" property="position" />
@@ -15,7 +15,7 @@
     delete from student
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.jnshu.tiles.entity.Student">
+  <insert id="insert" parameterType="jnshu.tiles.entity.Student">
     insert into student (id, img, position, 
       name, description, salary, 
       create_at, update_at)
@@ -23,7 +23,7 @@
       #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
       #{createAt,jdbcType=BIGINT}, #{updateAt,jdbcType=BIGINT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.jnshu.tiles.entity.Student">
+  <update id="updateByPrimaryKey" parameterType="jnshu.tiles.entity.Student">
     update student
     set img = #{img,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
