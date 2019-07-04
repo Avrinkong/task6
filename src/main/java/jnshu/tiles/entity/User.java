@@ -1,6 +1,9 @@
 package jnshu.tiles.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User  implements Serializable {
+    private static final long serialVersionUID = 8551366197255626464L;
     private Long id;
 
     private String username;

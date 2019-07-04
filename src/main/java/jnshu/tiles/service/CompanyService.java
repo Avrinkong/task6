@@ -6,6 +6,7 @@ import jnshu.tiles.entity.CompanyExample;
 
 import java.util.List;
 
+
 public interface CompanyService {
     Company selectById(Long id);
 

@@ -16,11 +16,13 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+   /* @Cacheable(value = "aboutUser")*/
     public List<User> findUser(UserExample userExample) {
         return userMapper.selectByExample(userExample);
     }
 
     @Override
+    /*@CacheEvict(value= "aboutUser", allEntries=true)*/
     public int add(User user) {
         int i = userMapper.insertSelective(user);
         return i;

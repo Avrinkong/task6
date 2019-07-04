@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("professionService")
 public class ProfessionServiceImpl implements ProfessionService {
 
     @Autowired
     private ProfessionMapper professionMapper;
 
+    @Override
+   /* @Cacheable(value = "aboutProfession")*/
     public List<Profession> select(ProfessionExample professionExample) {
         return professionMapper.selectByExample(professionExample);
     }

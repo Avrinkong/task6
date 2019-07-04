@@ -1,6 +1,9 @@
 package jnshu.tiles.entity;
 
-public class Profession {
+import java.io.Serializable;
+
+public class Profession implements Serializable {
+    private static final long serialVersionUID = -3231725470514605104L;
     private Long id;
 
     private String img;

@@ -2,6 +2,7 @@ package jnshu.tiles.service.impl;
 
 import jnshu.tiles.dao.StudentMapper;
 import jnshu.tiles.entity.Student;
+import jnshu.tiles.entity.StudentExample;
 import jnshu.tiles.service.StudnetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,9 @@ public class StudentServiceImpl implements StudnetService {
     }
 
     @Override
-    public List<Student> selectAll() {
-        List<Student> students = studentMapper.selectAll();
+   /* @Cacheable(value = "aboutStudent")*/
+    public List<Student> selectAll(StudentExample studentExample) {
+        List<Student> students = studentMapper.selectByExample(studentExample);
         return students;
     }
 

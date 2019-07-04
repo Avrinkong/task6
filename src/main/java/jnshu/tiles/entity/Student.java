@@ -1,6 +1,9 @@
 package jnshu.tiles.entity;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
+    private static final long serialVersionUID = -7127197430934181812L;
     private Long id;
 
     private String img;
@@ -30,7 +33,7 @@ public class Student {
     }
 
     public void setImg(String img) {
-        this.img = img == null ? null : img.trim();
+        this.img = img;
     }
 
     public String getPosition() {
@@ -38,7 +41,7 @@ public class Student {
     }
 
     public void setPosition(String position) {
-        this.position = position == null ? null : position.trim();
+        this.position = position;
     }
 
     public String getName() {
@@ -46,7 +49,7 @@ public class Student {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getDescription() {
@@ -54,7 +57,7 @@ public class Student {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
     }
 
     public Integer getSalary() {

@@ -1,9 +1,11 @@
 package jnshu.tiles.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserExample {
+public class UserExample  implements Serializable {
+    private static final long serialVersionUID = 1209217646188766276L;
     protected String orderByClause;
 
     protected boolean distinct;

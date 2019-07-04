@@ -62,6 +62,7 @@
 
     <!--<import resource="classpath:spring/applicationContext-shiro.xml"/>-->
 
+    <!--定义拦截器-->
     <mvc:interceptors>
         <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
         <!--<bean class="jnshu.tiles.LoginInterceptor"/>-->
@@ -82,4 +83,7 @@
         </property>
     </bean>
     <mvc:default-servlet-handler/>
+
+
+
 </beans>

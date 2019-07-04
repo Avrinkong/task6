@@ -45,7 +45,7 @@ NUMERIC 类型解析为java.math.BigDecimal -->
         </javaClientGenerator>
 
         <!--<table schema="" tableName="company"/>-->
-        <table schema="" tableName="user"/>
+        <table schema="" tableName="student"/>
         <!--<table schema="shirotest" tableName="t_role">
         </table>
         <table schema="shirotest" tableName="t_user">

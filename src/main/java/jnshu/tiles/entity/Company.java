@@ -1,6 +1,10 @@
 package jnshu.tiles.entity;
 
-public class Company {
+import java.io.Serializable;
+
+public class Company implements Serializable {
+
+    private static final long serialVersionUID = -8592677541264871076L;
     private Long id;
 
     private String company;

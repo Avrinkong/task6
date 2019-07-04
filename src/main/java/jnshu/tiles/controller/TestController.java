@@ -3,12 +3,16 @@ package jnshu.tiles.controller;
 
 import jnshu.tiles.entity.*;
 import jnshu.tiles.service.CompanyService;
+import jnshu.tiles.service.ProfessionService;
+import jnshu.tiles.service.StudnetService;
 import jnshu.tiles.service.UserService;
-import jnshu.tiles.service.impl.ProfessionServiceImpl;
-import jnshu.tiles.service.impl.StudentServiceImpl;
 import jnshu.tiles.utils.JWTUtil;
 import jnshu.tiles.utils.MD5;
+import jnshu.tiles.utils.MemCachedUtil;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,20 +31,61 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    private StudentServiceImpl studentService;
+    ApplicationContext ac;
+/*
 
     @Autowired
-    private ProfessionServiceImpl professionService;
+    private MemCachedClient memCachedClient;
+*/
 
     @Autowired
-    private CompanyService companyService;
+    private StudnetService studentService;
+
+
+    @Autowired
+    private ProfessionService professionService;
+
+   /* @Autowired
+    private CompanyService companyService;*/
 
     @Autowired
     private UserService userService;
 
+
+
+    @Test
+    @RequestMapping("/aop")
+    public void testAop() {
+        ApplicationContext ac =new ClassPathXmlApplicationContext("classpath:/spring/spring-mybatis.xml");
+        TestController testController = (TestController) ac.getBean("testController");
+        System.out.println("方法one 执行");
+        testController.one();
+        System.out.println("方法two 执行");
+        testController.two();
+        System.out.println("方法three 执行");
+        testController.three(1L);
+        System.out.println("方法five 执行");
+        testController.five();
+        System.out.println("方法test 执行");
+        testController.test();
+        /*return "myView4";*/
+
+    }
+
     @RequestMapping("/u/one")
     public ModelAndView one() {
-        List<Student> students = studentService.selectAll();
+       // StudentServiceImpl studentService = (StudentServiceImpl) ac.getBean("StudentService");
+        /*ApplicationContext ac =new ClassPathXmlApplicationContext("classpath:/spring/spring-mybatis.xml");
+        TestController testController = (TestController) ac.getBean("companyServiceImpl");*/
+        MemCachedUtil instance = MemCachedUtil.getInstance();
+        StudentExample studentExample =new StudentExample();
+        StudentExample.Criteria criteria = studentExample.createCriteria();
+        List<Student> students =null;
+        if (null!=instance.get("student")){
+            students= (List<Student>) instance.get("student");
+        }else {
+            students= studentService.selectAll(studentExample);
+        }
         List<Student> list = new ArrayList<Student>();
         if (students.size()>4){
             list = students.subList(0, 4);
@@ -48,6 +93,7 @@ public class TestController {
             list= students;
         }
         ModelAndView model = new ModelAndView("myView1");
+        /*MemCachedUtil.getInstance().add("list",list);*/
         model.addObject("list",list);
        // model.setViewName("myView1");
         //model.addAttribute("head","head1");
@@ -85,6 +131,8 @@ public class TestController {
 
     @RequestMapping("/three")
     public ModelAndView three(@RequestParam(defaultValue = "1") Long id) {
+        ApplicationContext ac =new ClassPathXmlApplicationContext("classpath:/spring/spring-mybatis.xml");
+        CompanyService companyService = (CompanyService) ac.getBean("companyService");
         CompanyExample companyExample = new CompanyExample();
         CompanyExample.Criteria criteria = companyExample.createCriteria();
         criteria.andIdEqualTo(id);
@@ -214,4 +262,16 @@ public class TestController {
         modelAndView.setViewName("myView4");
         return modelAndView;
     }
+
+    @Test
+    public  void test() {
+      /*  MemCachedUtil.getInstance().add("username","luck");
+        String username = (String) MemCachedUtil.getInstance().get("username");
+        System.out.println(username);*/
+       /* boolean today1 = memCachedClient.set("today", "123");
+        System.out.println(today1);
+        String today = (String) memCachedClient.get("today");
+        System.out.println(today);*/
+    }
+
 }

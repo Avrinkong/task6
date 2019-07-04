@@ -1,9 +1,14 @@
 package jnshu.tiles.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfessionExample {
+/**
+ * @author kxp6223065
+ */
+public class ProfessionExample  implements Serializable {
+    private static final long serialVersionUID = -2918994281206785543L;
     protected String orderByClause;
 
     protected boolean distinct;
